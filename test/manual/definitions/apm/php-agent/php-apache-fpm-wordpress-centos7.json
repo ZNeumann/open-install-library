@@ -1,0 +1,29 @@
+{
+    "global_tags": {
+        "owning_team": "OpenSource",
+        "Environment": "development",
+        "Department": "Product",
+        "Product": "Virtuoso"
+    },
+
+    "resources": [{
+      "id": "php-a-f-w-u18",
+      "display_name": "PHP Apache FPM Wordpress",
+      "provider": "aws",
+      "type": "ec2",
+      "size": "t2.micro",
+      "ami_name": "CentOS 7.9.2009 x86_64",
+      "user_name": "centos"
+    }],
+
+    "services": [
+        {
+          "id": "wordpress",
+          "display_name": "Centos PHP Apache FPM Wordpress",
+          "source_repository": "-b centos https://github.com/ZNeumann/open-install-library.git",
+          "deploy_script_path": "test/deploy/linux/php/apache-fpm-wordpress/centos/roles",
+          "port": 80,
+          "destinations": ["php-a-f-w-u18"]
+        }
+    ]
+}
