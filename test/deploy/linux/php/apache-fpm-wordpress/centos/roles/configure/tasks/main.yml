@@ -2,7 +2,16 @@
 - debug:
     msg: Install PHP
 
-- name: install PHP
+- name: install php pre-reqs
+  yum:
+    pkg:
+      - yum-utils
+      - epel-release
+      - http://rpms.remirepo.net/enterprise/remi-release-7.rpm
+    state: present
+  become: yes
+
+- name: enable PHP
   shell: "sudo yum-config-manager --enable remi-php72"
   become: yes
 
@@ -11,6 +20,7 @@
     pkg:
       - php 
       - php-common
+      - php-opcache
       - php-mcrypt
       - php-cli
       - php-gd
