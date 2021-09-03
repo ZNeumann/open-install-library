@@ -2,11 +2,20 @@
 - debug:
     msg: Install PHP
 
+- name: install PHP
+  shell: "sudo yum-config-manager --enable remi-php72"
+  become: yes
+
 - name: install other pre-reqs
   yum:
     pkg:
-      - php
-      - php-mysql
+      - php 
+      - php-common
+      - php-mcrypt
+      - php-cli
+      - php-gd
+      - php-curl
+      - php-mysqlnd
       - httpd
       - mariadb
       - mariadb-server
